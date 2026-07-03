@@ -6,6 +6,7 @@ PPO agent trained to drive it.
 
 **Result:** after only 50,000 training steps (a few minutes on CPU), the agent
 already completes full laps on procedurally generated tracks it wasn't trained on.
+
 ![demo](demo.gif)
 
 ## Purpose
