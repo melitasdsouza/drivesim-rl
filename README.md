@@ -8,7 +8,7 @@ PPO agent trained to drive it.
 already completes full laps on procedurally generated tracks it wasn't trained on.
 See `demo_50k.mp4`.
 
-## Why this project
+## Purpose
 
 Built to demonstrate the intersection of computer graphics (custom renderer,
 sensor simulation, procedural generation) and reinforcement learning (reward
@@ -47,7 +47,7 @@ python record_demo.py --model ppo_driver.zip --out demo.mp4
 python record_demo.py --model ppo_driver_pretrained.zip --out demo.mp4
 ```
 
-## Design notes (for your writeup / interview talking points)
+## Design notes
 
 **Environment design.** The track is generated procedurally each episode by
 perturbing a circle's radius with a few random sine harmonics — this keeps
@@ -60,8 +60,7 @@ This mirrors how real AV stacks fuse range sensors with vehicle state — and
 keeps the observation low-dimensional enough to train fast on CPU (no image
 input needed, unlike pixel-based RL environments).
 
-**Reward shaping — this is the part worth discussing in an interview.** The
-reward is progress along the track's centerline (checkpoint index delta per
+**Reward shaping.** The reward is progress along the track's centerline (checkpoint index delta per
 step), not raw distance traveled or speed. Early versions that rewarded speed
 directly caused the agent to floor it into walls; rewarding raw position
 caused it to farm reward by oscillating near the start line. Tying reward to
@@ -76,7 +75,7 @@ reward can't come from memorizing a fixed path — the agent has to use its
 sensors. That's the property to highlight if asked "how do you know it
 learned to drive vs. memorized something."
 
-## Suggested next steps (good "future work" section)
+## Future work
 
 - Train longer (200k-500k+ steps) for smoother, faster driving.
 - Add other vehicles / obstacles to avoid — turns this into a more genuine
